@@ -152,6 +152,14 @@ func NewClient(ctx context.Context, conf *Config, o ...options.ClientOptions) (c
 	return
 }
 
+func (c *Client) SetClient(client *mongo.Client) {
+	c.client = client
+}
+
+func (c *Client) Client() *mongo.Client {
+	return c.client
+}
+
 // client creates connection to MongoDB
 func client(ctx context.Context, opt *officialOpts.ClientOptions) (client *mongo.Client, err error) {
 	client, err = mongo.Connect(ctx, opt)
