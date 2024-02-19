@@ -29,6 +29,10 @@ type Database struct {
 	registry *bsoncodec.Registry
 }
 
+func (d *Database) Database() *mongo.Database {
+	return d.database
+}
+
 // Collection gets collection from database
 func (d *Database) Collection(name string, opts ...*options.CollectionOptions) *Collection {
 	var cp *mongo.Collection
